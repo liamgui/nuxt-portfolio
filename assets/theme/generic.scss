@@ -1,0 +1,31 @@
+// Generic 
+$body-background-color: $scheme-main;
+$body-size: 16px;
+$body-min-width: 300px;
+$body-rendering: optimizeLegibility;
+$body-family: $family-primary;
+$body-overflow-x: hidden;
+$body-overflow-y: scroll;
+
+$body-color: $text;
+$body-font-size: 1em;
+$body-weight: $weight-normal;
+$body-line-height: 1.5;
+
+$code-family: $family-code;
+$code-padding: 0.25em 0.5em 0.25em;
+$code-weight: normal;
+$code-size: 0.875em;
+
+$small-font-size: 0.875em;
+
+$hr-background-color: $background;
+$hr-height: 2px;
+$hr-margin: 1.5rem 0;
+
+$strong-color: $text-strong;
+$strong-weight: $weight-bold;
+
+$pre-font-size: 0.875em;
+$pre-padding: 1.25rem 1.5rem;
+$pre-code-font-size: 1em;
