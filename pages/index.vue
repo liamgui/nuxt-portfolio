@@ -1,53 +1,37 @@
 <template>
-  <section class="section">
-    <div class="columns is-mobile">
-      <card
-        title="Free"
-        icon="github"
-      >
-        Open source on <a href="https://github.com/buefy/buefy">
-          GitHub
-        </a>
-      </card>
 
-      <card
-        title="Responsive"
-        icon="cellphone-link"
-      >
-        <b class="has-text-grey">
-          Every
-        </b> component is responsive
-      </card>
+	<main>
+		<div class="container">
+			<div class="mainfrontInfo">
+				<div class="mainName">
+					<h1 class="header1" id="name">
+						<span id="firstName"
+							>W<span id="iLetter">i</span>ll</span
+						><br /><span id="lastName">Guidinger</span>
+					</h1>
+					<ul class="whoIAm">
+						<li>web designer</li>
+						<li>web developer</li>
+					</ul>
+				</div>
+				<div class="bottomalignCenter">
+					<h2 id="bottomHeader">Portfolio</h2>
+				</div>
+			</div>
+		</div>
+	</main>
 
-      <card
-        title="Modern"
-        icon="alert-decagram"
-      >
-        Built with <a href="https://vuejs.org/">
-          Vue.js
-        </a> and <a href="http://bulma.io/">
-          Bulma
-        </a>
-      </card>
-
-      <card
-        title="Lightweight"
-        icon="arrange-bring-to-front"
-      >
-        No other internal dependency
-      </card>
-    </div>
-  </section>
 </template>
 
 <script>
-import Card from '~/components/Card'
+// import GuidingerNav from '~/components/GuidingerNav'
 
 export default {
-  name: 'HomePage',
+	name: 'HomePage',
 
-  components: {
-    Card
-  }
+	// components: {
+	// 	GuidingerNav
+	// },
+	
 }
 </script>
