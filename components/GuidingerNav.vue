@@ -58,15 +58,25 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
 	data() {
 		return {
 			nav: false,
 		}
 	},
+	computed: {
+		navState() {
+			return this.$store.state.navigation.navState;
+		}
+	},
 	created() {},
 	methods: {
+		...mapMutations({
+			toggle: 'navigation/toggle'
+		}),
 		navButtonClick() {
+			this.toggle();
 			if (process.client) {
 				const nonNavs = document.querySelectorAll('.nonNav')
 				const mainContent = document.querySelectorAll('.mainContent')[0]
