@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
 	data() {
 		return {
@@ -66,14 +66,17 @@ export default {
 		}
 	},
 	computed: {
-		navState() {
-			return this.$store.state.navigation.navState;
-		}
+		// navState() {
+		// 	return this.getNavState()
+		// }
 	},
 	created() {},
 	methods: {
-		...mapMutations({
-			toggle: 'navigation/toggle'
+		...mapActions({
+			toggle: 'navigation/toggleNavState'
+		}),
+		...mapGetters({
+			navState: 'navigation/getNavState'
 		}),
 		navButtonClick() {
 			this.toggle();
