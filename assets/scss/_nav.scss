@@ -300,15 +300,32 @@ $line-height: 2px;
 $tdur: 0.7s;
 
 .xlose {
-	#line1 {
+	.line1 {
 		animation: toXloseLine1 $tdur ease forwards;
 	}
-	#line2 {
+	.line2 {
 		animation: toXloseLine2 $tdur ease forwards;
 	}
 }
-
 $translate: ((25/100) * $height) - ($line-height/2);
+
+.times {
+	.line1 {
+		transform: translateY($translate) rotate(45deg) scaleX(1);
+	}
+	.line2 {
+		transform: translateY(-$translate) rotate(-45deg) scaleX(1);
+	}
+}
+.open {
+	.line1 {
+		animation: toXloseLine1 $tdur ease forwards reverse;
+	}
+	.line2 {
+		animation: toXloseLine2 $tdur ease forwards reverse;
+	}
+}
+
 
 @keyframes toXloseLine1 {
 	0% {

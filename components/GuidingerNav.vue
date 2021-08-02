@@ -1,13 +1,13 @@
 <template>
 	<header>
 		<div
-			class="navButton"
-			:class="{ xlose: navState }"
 			ref="navButton"
+			class="navButton"
+			:class="{ xlose: toXlose, times: navState && !toXlose, open: toOpen }"
 			@click="navButtonClick()"
 		>
-			<div class="line line1" id="line1"></div>
-			<div class="line line2" id="line2"></div>
+			<div id="line1" class="line line1"></div>
+			<div id="line2" class="line line2"></div>
 		</div>
 
 		<div ref="navOverlay" class="navOverlay" >
@@ -45,12 +45,15 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
 	data() {
-		return {}
+		return {
+			toXlose: false,
+			toOpen: false
+		}
 	},
 	computed: {
 		navState() {
-			return this.getNavState()
-		},
+			return this.getNavState();
+		}
 	},
 	created() {
 		// console.log(line1);
@@ -62,8 +65,26 @@ export default {
 		...mapGetters({
 			getNavState: 'navigation/getNavState',
 		}),
+		xloseTimeout(duration) {
+			this.toXlose = true;
+			setTimeout(()=> {
+				this.toXlose = false;
+			}, duration);
+		},
+		openTimeout(duration) {
+			this.toOpen = true;
+			setTimeout(()=> {
+				this.toOpen = false;
+			}, duration);
+		},
 		navButtonClick() {
-			this.toggle()
+			this.toggle();
+			const duration = 700;
+			if (this.navState) {
+				this.xloseTimeout(duration);
+			} else {
+				this.openTimeout(duration);
+			}
 
 			if (process.client) {
 				const nonNavs = document.querySelectorAll('.nonNav')
