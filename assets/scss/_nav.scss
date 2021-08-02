@@ -186,23 +186,6 @@ html {
 	z-index: 100;
 }
 
-#navButton {
-	position: relative;
-	align-self: center;
-	cursor: pointer;
-	/* padding: 1em; */
-}
-
-#navButton svg {
-	z-index: 20;
-	width: 4vw;
-	min-width: 3em;
-	position: absolute;
-	top: 4.6vw;
-	left: 89vw;
-	align-content: center;
-	margin: 0 auto;
-}
 
 #backButton {
 	cursor: pointer;
@@ -273,11 +256,104 @@ html {
 		color: #3f4146;
 		letter-spacing: 1.3px;
 	}
-	#navButton {
-		right: 25px;
-	}
 }
 
 .goodbye {
 	display: none;
+}
+
+$width: 60px;
+$height: 60px;
+
+.navButton {
+
+	// background: #333;
+	width: $width;
+	height: $height;
+	position: absolute;
+	cursor: pointer;
+	top: 2rem;
+	right: 4rem;
+	z-index: 16;
+}
+
+$line-height: 2px;
+.line {
+	height: 2px;
+	border-radius: 5rem;
+	background-color: white;
+	width: 100%;
+	transform-origin: center;
+}
+
+.line1 {
+	// transform: translateY((25/100) * $height);
+	position: absolute;
+	top: 25%;
+}
+.line2 {
+	position: absolute;
+	bottom: 25%;
+	// transform: translateY((75/100) * $height);
+}
+
+$tdur: 0.7s;
+
+.xlose {
+	#line1 {
+		animation: toXloseLine1 $tdur ease forwards;
+	}
+	#line2 {
+		animation: toXloseLine2 $tdur ease forwards;
+	}
+}
+
+$translate: ((25/100) * $height) - ($line-height/2);
+
+@keyframes toXloseLine1 {
+	0% {
+		transform: translateY(0) rotate(0deg) scaleX(1);
+	}
+	20% {
+		transform: translateY($translate) rotate(0deg) scaleX(1);
+	}
+	40% {
+		transform: translateY($translate) rotate(0deg) scaleX(0);
+	}
+	41% {
+		transform: translateY($translate) rotate(45deg) scaleX(0);
+	}
+	65% {
+		transform: translateY($translate) rotate(45deg) scaleX(0);
+	}
+	90% {
+		transform: translateY($translate) rotate(45deg) scaleX(1.25);
+	}
+	100% {
+		transform: translateY($translate) rotate(45deg) scaleX(1);
+	}
+}
+
+@keyframes toXloseLine2 {
+	0% {
+		transform: translateY(0) rotate(0deg) scaleX(1);
+	}
+	20% {
+		transform: translateY(-$translate) rotate(0deg) scaleX(1);
+	}
+	40% {
+		transform: translateY(-$translate) rotate(0deg) scaleX(0);
+	}
+	41% {
+		transform: translateY(-$translate) rotate(-45deg) scaleX(0);
+	}
+	65% {
+		transform: translateY(-$translate) rotate(-45deg) scaleX(0);
+	}
+	90% {
+		transform: translateY(-$translate) rotate(-45deg) scaleX(1.25);
+	}
+	100% {
+		transform: translateY(-$translate) rotate(-45deg) scaleX(1);
+	}
 }
