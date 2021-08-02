@@ -3,7 +3,7 @@
 		<div
 			ref="navButton"
 			class="navButton"
-			:class="{ xlose: toXlose, times: navState && !toXlose, open: toOpen }"
+			:class="{ xlose: navState && animateNavButton, times: navState && !animateNavButton, open: !navState && animateNavButton }"
 			@click="navButtonClick()"
 		>
 			<div id="line1" class="line line1"></div>
@@ -46,8 +46,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
 	data() {
 		return {
-			toXlose: false,
-			toOpen: false
+			animateNavButton: false
 		}
 	},
 	computed: {
@@ -65,27 +64,16 @@ export default {
 		...mapGetters({
 			getNavState: 'navigation/getNavState',
 		}),
-		xloseTimeout(duration) {
-			this.toXlose = true;
+		animateNavButtonTimeout(duration) {
+			this.animateNavButton = true;
 			setTimeout(()=> {
-				this.toXlose = false;
-			}, duration);
-		},
-		openTimeout(duration) {
-			this.toOpen = true;
-			setTimeout(()=> {
-				this.toOpen = false;
+				this.animateNavButton = false;
 			}, duration);
 		},
 		navButtonClick() {
 			this.toggle();
 			const duration = 700;
-			if (this.navState) {
-				this.xloseTimeout(duration);
-			} else {
-				this.openTimeout(duration);
-			}
-
+			this.animateNavButtonTimeout(duration);
 			if (process.client) {
 				const nonNavs = document.querySelectorAll('.nonNav')
 				const mainContent = document.querySelectorAll('.mainContent')[0]
